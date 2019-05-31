@@ -1,34 +1,60 @@
-describe('add', function () {
-    it('add two numbers, and equal zero', function () {
-        let result = add(0, 0);
-        expect(result).toEqual(0);
-        });
+//add
+function add() {
+    let sum = 0;
+    for (let i = 0; i < arguments.length; i++) {
+        sum += arguments[i];
+    }
+    return sum;
+}
 
-    it('add negative numbers, and equal to -2', function () {
-        let result = add(-1, -1);
-        expect(result).toEqual(-2);
-        });
-        
-    it('add two number, and equal 9', function () {
-        let result = add(4, 5);
-        expect(result).toEqual(9);
-    });
-    it('add many numbers, and equal to 10', function () {
-        let result = add(1, 2, 3, 4);
-        expect(result).toEqual(10);
-    });
-
-});
+//multiply
+function multiply() {
+    let multiply = 1;
+    for (let j = 0; j < arguments.length; j++) {
+        multiply *= arguments[j];
+    }
+    return multiply;
+}
 
 
-describe('multiply', function () {
-    it('multiply two numbers, and return 2', function () {
-        let result = multiply(1, 2);
-        expect(result).toEqual(2);
-    });
+// calculator class
 
-    it('mutiply multiple numbers, and return result', function () {
-    let result = multiply(1, 2, 3, 4);
-    expect(result).toEqual(24);
-    });
-});
+class Calculator {
+    constructor() {
+        this.lastNum = 0;
+        this.slot = [];
+    }
+    //add numbers
+    add() {
+        let sum = 0;
+        for (let i = 0; i < arguments.length; i++) {
+            sum += arguments[i];
+        }
+        this.lastNum = sum;
+        return sum;
+    }
+
+
+    //muiltiply numbers
+    multiply() {
+        let product = 1;
+        for (let i = 0; i < arguments.length; i++) {
+            product *= arguments[i];
+        }
+        this.lastNum = product;
+        return product;
+    }
+
+    //return last
+    last() {
+        return this.lastNum;
+    }
+
+    set_slot(number) {
+        this.slot[number] = this.lastNum;
+    }
+
+    get_slot(number) {
+        return this.slot[number];
+    }
+};
